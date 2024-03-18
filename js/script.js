@@ -23,6 +23,8 @@
 
 const gridGame = document.querySelector('.grid');
 const playStartTheGame = document.querySelector('.btn');
+const scoreContainer = document.querySelector('.score-counter-container')
+const userScoreCounter = document.querySelector('.score-counter');
 
 playStartTheGame.addEventListener('click', function () {
    // richiamiamo il valore delle option nel select 
@@ -32,6 +34,7 @@ playStartTheGame.addEventListener('click', function () {
    let howManyCells = difficultyLevel (mySelect)
 
    gridGame.style.display = 'flex'
+   scoreContainer.style.display = 'flex'
    gridGame.innerHTML = '';
    // Variabile per invocare la funzione che genera l'array dei numberi bomb
    const generatedRandomNumbers = generateBombItems (16, 1, howManyCells);
@@ -59,7 +62,8 @@ playStartTheGame.addEventListener('click', function () {
                     if (!this.classList.contains('square-blue')) {
                         this.classList.add('square-blue')
                         yourScore++
-                        console.log(yourScore);
+                        userScoreCounter.innerHTML = yourScore
+                        console.log(userScoreCounter);
                     }
                 }
             }           
