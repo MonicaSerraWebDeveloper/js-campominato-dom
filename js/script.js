@@ -51,6 +51,8 @@ playStartTheGame.addEventListener('click', function () {
    gridGame.style.display = 'flex'
    scoreContainer.style.display = 'flex'
    gridGame.innerHTML = '';
+   userScoreCounter.innerHTML = '';
+
    // Variabile per invocare la funzione che genera l'array dei numberi bomb
    const generatedRandomNumbers = generateBombItems (bombNumberCells, 1, numberCells);
    console.log(generatedRandomNumbers);
@@ -59,7 +61,7 @@ playStartTheGame.addEventListener('click', function () {
 
     // La variabile parte del presupposto che la bomba non è cliccata
     let yourScore = 0;
-    let bombClicked = false;
+    let stopClick = false;
     for (let i = 1; i <= numberCells; i++) {
         let numberCellsGrid = i
         let squareGenerated = squareGenerator(numberCellsGrid, mySelect)
@@ -68,11 +70,11 @@ playStartTheGame.addEventListener('click', function () {
         // Se il numero è presente nell'array di generateBombItems allora il colore di bg è rosso       
         squareGenerated.addEventListener('click', function() {
             // Con la condizione if gli diciamo che finché la bomba non è cliccata allora tutto il resto della condizione del condice si verifica
-            if (!bombClicked) {
+            if (!stopClick) {
                 if (generatedRandomNumbers.includes(numberCellsGrid)) {
                     this.classList.add('square-red')
                     console.log(numberCellsGrid);
-                    bombClicked = true // nel momento in cui la bomba viene cliccata la variabile in alto diventa true e il gioco termina
+                    stopClick = true // nel momento in cui la bomba viene cliccata la variabile in alto diventa true e il gioco termina
                     alert(`il tuo punteggio è: ${yourScore}`)
                 } else {   
                     // Il click viene contato solo se la cella non ha la classe 'square-blu'
@@ -80,13 +82,13 @@ playStartTheGame.addEventListener('click', function () {
                         this.classList.add('square-blue')
                         yourScore++
                         userScoreCounter.innerHTML = yourScore
-                        
                     }
                 }
             }  
             console.log(yourScore, allCellsToWin);
             if (yourScore === allCellsToWin) {
                 alert('hai vinto')
+                stopClick = true
             } 
         })
     }
