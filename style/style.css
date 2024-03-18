@@ -1,0 +1,172 @@
+/*--------------------
+        RESET
+----------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*--------------------
+        GENERAL
+----------------------*/
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*--------------------
+        TYPOGRAPHY
+----------------------*/
+
+h1 {
+    font-size: 26px;
+}
+
+
+/*--------------------
+        HEADER
+----------------------*/
+
+header {
+    background-color: #fff;
+    height: 70px;   
+    display: flex;
+    align-items: center; 
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 0;
+}
+
+.logo-container img {
+    width: 50px;
+}
+
+.btn {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    padding: 1px 25px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.select {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    padding: 1px 25px;
+    background-color: #efefef;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+/*--------------------
+        MAIN
+----------------------*/
+
+main {
+    background-color: #7fffd4;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    display: flex;
+}
+
+.container-grid {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.grid, .grid-medium, .grid-hard {
+    width: 500px;
+    height: 500px;
+    border: 1px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    display: none;
+}
+
+.square {
+    border: 1px solid #000;
+    width: calc(100% / 10);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.square-blue {
+    background-color: lightskyblue;
+}
+
+
+/*--------------------
+        BONUS
+----------------------*/
+
+.square-medium {
+    border: 1px solid #000;
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.square-hard {
+    border: 1px solid #000;
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+/*--------------------
+        FOOTER
+----------------------*/
+
+footer {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.container-footer {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
