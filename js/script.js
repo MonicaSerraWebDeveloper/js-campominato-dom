@@ -27,21 +27,17 @@ playStartTheGame.addEventListener('click', function () {
         gridGame.append(squareGenerated);
 
         // Se il numero è presente nell'array di generateBombItems allora il colore di bg è rosso
-        if (generatedRandomNumbers.includes(numberCellsGrid)) {
-            squareGenerated.addEventListener('click', function() {
-                this.classList.toggle('square-red')
+        squareGenerated.addEventListener('click', function() {
+            if (generatedRandomNumbers.includes(numberCellsGrid)) {
+                this.classList.add('square-red')
                 console.log(numberCellsGrid);
-            })
-        } else {
-            squareGenerated.addEventListener('click', function() {
-                this.classList.toggle('square-blue')
+            } else {
+                this.classList.add('square-blue')
                 console.log(numberCellsGrid);
-            })
-        }
+            } 
+        })
     }
 });
-
-
 
 // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà
 // prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata 
