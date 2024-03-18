@@ -21,6 +21,7 @@ playStartTheGame.addEventListener('click', function () {
    const generatedRandomNumbers = generateBombItems (16, 1, howManyCells);
    console.log(generatedRandomNumbers);
 
+    // La variabile parte del presupposto che la bomba non è cliccata
     let bombClicked = false
     for (let i = 1; i <= howManyCells; i++) {
         let numberCellsGrid = i
@@ -29,11 +30,12 @@ playStartTheGame.addEventListener('click', function () {
 
         // Se il numero è presente nell'array di generateBombItems allora il colore di bg è rosso
         squareGenerated.addEventListener('click', function() {
+            // Con la condizione if gli diciamo che finché la bomba non è cliccata allora tutto il resto della condizione del condice si verifica
             if (!bombClicked) {
                 if (generatedRandomNumbers.includes(numberCellsGrid)) {
                     this.classList.add('square-red')
                     console.log(numberCellsGrid);
-                    bombClicked = true
+                    bombClicked = true // nel momento in cui la bomba viene cliccata la variabile in alto diventa true è il gioco termina
                 } else {
                     this.classList.add('square-blue')
                     console.log(numberCellsGrid);
