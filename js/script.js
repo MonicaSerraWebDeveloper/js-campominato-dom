@@ -32,7 +32,18 @@ playStartTheGame.addEventListener('click', function () {
        }
 });
 
+// Il computer deve generare 16 numeri casuali nello stesso range della difficoltà
+// prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata 
+// al massimo una bomba, perciò nell’array delle bombe non potranno esserci 
+// due numeri uguali.
 
+// Funzione che genera 16 numeri casuale da un numero min ad un numero max
+// I numeri devono essere da 1 a 100 (ma anche renderli dinamici)
+// I numeri generati casualmente non devono essere uguali tra loro
+// Vanno pushati dentro un array 
+// Se i numeri generati dal ciclo sono uguali a quelli contenuti nell'array
+// Allora nel caso di questi numeri al momento del click della cella il colore diventa rossa
+// Il gioco termina  
 
 // FUNCTIONS
 // La funzione ha lo scopo di generare delle celle chiamate square con numeri all'interno da 1 a 100
