@@ -56,14 +56,13 @@ playStartTheGame.addEventListener('click', function () {
                     this.classList.add('square-red')
                     console.log(numberCellsGrid);
                     bombClicked = true // nel momento in cui la bomba viene cliccata la variabile in alto diventa true è il gioco termina
-                    console.log(yourScore);
+                    alert(`il tuo punteggio è: ${yourScore}`)
                 } else {         
                     // Il click viene contato solo se la cella non ha la classe 'square-blu'
                     if (!this.classList.contains('square-blue')) {
                         this.classList.add('square-blue')
                         yourScore++
                         userScoreCounter.innerHTML = yourScore
-                        console.log(userScoreCounter);
                     }
                 }
             }           
