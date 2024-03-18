@@ -11,15 +11,13 @@ const playStartTheGame = document.querySelector('.btn');
 playStartTheGame.addEventListener('click', function () {
    // richiamiamo il valore delle option nel select 
    const mySelect = document.querySelector('.select').value;
-   console.log(mySelect);
 
    //invochiamo la funzione per definire quante celle genare in base al livello
    let howManyCells = difficultyLevel (mySelect)
-   console.log(howManyCells);
 
    gridGame.style.display = 'flex'
-
    gridGame.innerHTML = '';
+   
        for (let i = 1; i <= howManyCells; i++) {
        
            let squareGenerated = squareGenerator(i, mySelect)
@@ -31,6 +29,16 @@ playStartTheGame.addEventListener('click', function () {
            })
        }
 });
+
+const generatedRandomNumbers = generateBombItems (16, 1, 100);
+console.log(generatedRandomNumbers);
+
+let bombNumber;
+for (let i = 0; i < generatedRandomNumbers.length; i++) {
+    bombNumber = generatedRandomNumbers[i]
+}
+console.log(bombNumber);
+
 
 // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà
 // prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata 
@@ -44,6 +52,9 @@ playStartTheGame.addEventListener('click', function () {
 // Se i numeri generati dal ciclo sono uguali a quelli contenuti nell'array
 // Allora nel caso di questi numeri al momento del click della cella il colore diventa rossa
 // Il gioco termina  
+
+// Prendere ogni item all'interno dell'array e se è uguale al un numero presente nel ciclo for 
+// Mettere una condizione all'interno dell'evento di ascolto che assegna il colore alla cella
 
 // FUNCTIONS
 // La funzione ha lo scopo di generare delle celle chiamate square con numeri all'interno da 1 a 100
@@ -89,11 +100,7 @@ function difficultyLevel (input) {
 // Creiamo un ciclo while per genere un nuovo numero casuale fino a che non raggiungiamo 16 items
 // Pushiamo gli elementi generati dal ciclo while per pusharli dentro l'array
 // Return: la liste dei numeri che rappresentano le bomb
-
-const generatedBombList = generateBombItems (itemsArrayNumber, numMinRandom, numMaxRandom)
-console.log(generatedBombList);
-
-function generateBombItems () {
+function generateBombItems (itemsArrayNumber, numMinRandom, numMaxRandom) {
     const bombList = [];
     while (bombList.length < itemsArrayNumber) {
         randomNumberRange = getRndInteger(numMinRandom, numMaxRandom)
