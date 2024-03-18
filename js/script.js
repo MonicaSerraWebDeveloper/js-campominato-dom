@@ -80,6 +80,12 @@ function difficultyLevel (input) {
     return numberCells
 }
 
+// Funzione per prendere 16 dei numeri casuali da 1 a 100 
+
+// Funzione per generare un numero random da un min ad un max preso da w3school
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
 
 // Click sul pulsante "play" per far comparire la griglia con un display: block
 // Creare gli square con numeri da 1 a 100
