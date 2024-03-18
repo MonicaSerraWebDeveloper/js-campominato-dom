@@ -81,6 +81,30 @@ function difficultyLevel (input) {
 }
 
 // Funzione per prendere 16 dei numeri casuali da 1 a 100 
+// Inserire in numeri dentro un array 
+// numRandomMin -> è un numero che ci serve per stabilire il minimo da cui partiamo
+// numRandomMax -> è un numero che ci serve per stabilire il massimo a cui arrivare
+// Creiamo un array vuoto pronto per essere popolato
+// Creiamo un ciclo while per genere un nuovo numero casuale fino a che non raggiungiamo 16 items
+// Pushiamo gli elementi generati dal ciclo while per pusharli dentro l'array
+
+
+
+
+const generatedBombList = generateBombItems ()
+console.log(generatedBombList);
+
+function generateBombItems () {
+    const bombList = [];
+    let randomNumberRange = 0;
+    while (bombList.length < 16) {
+        randomNumberRange = getRndInteger(1, 100)
+        bombList.push(randomNumberRange)
+    
+        randomNumberRange++
+    }
+    return bombList
+}
 
 // Funzione per generare un numero random da un min ad un max preso da w3school
 function getRndInteger(min, max) {
