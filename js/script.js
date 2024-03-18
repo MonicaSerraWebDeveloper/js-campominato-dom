@@ -26,24 +26,41 @@ const playStartTheGame = document.querySelector('.btn');
 const scoreContainer = document.querySelector('.score-counter-container')
 const userScoreCounter = document.querySelector('.score-counter');
 
+
+
 playStartTheGame.addEventListener('click', function () {
+
    // richiamiamo il valore delle option nel select 
    const mySelect = document.querySelector('.select').value;
 
+   let allCellsToWin;
+   let numberCells;
+   if (mySelect === 'easy') {
+       numberCells = 100;
+       allCellsToWin = numberCells - 16;
+   } else if (mySelect === 'medium') {
+       numberCells = 81;
+       allCellsToWin = numberCells - 16;
+   } else if (mySelect === 'hard') {
+       numberCells = 49;
+       allCellsToWin = numberCells - 16;
+   }
    //invochiamo la funzione per definire quante celle genare in base al livello
-   let howManyCells = difficultyLevel (mySelect)
+//    let howManyCells = difficultyLevel (mySelect)
 
    gridGame.style.display = 'flex'
    scoreContainer.style.display = 'flex'
    gridGame.innerHTML = '';
    // Variabile per invocare la funzione che genera l'array dei numberi bomb
-   const generatedRandomNumbers = generateBombItems (16, 1, howManyCells);
+   const generatedRandomNumbers = generateBombItems (16, 1, numberCells);
    console.log(generatedRandomNumbers);
+
+    // Creo una variabile che stabilisce il numero di celle che devono essere cliccate per vincere
 
     // La variabile parte del presupposto che la bomba non è cliccata
     let yourScore = 0;
     let bombClicked = false;
-    for (let i = 1; i <= howManyCells; i++) {
+    for (let i = 1; i <= numberCells; i++) {
         let numberCellsGrid = i
         let squareGenerated = squareGenerator(numberCellsGrid, mySelect)
         gridGame.append(squareGenerated);
@@ -55,20 +72,26 @@ playStartTheGame.addEventListener('click', function () {
                 if (generatedRandomNumbers.includes(numberCellsGrid)) {
                     this.classList.add('square-red')
                     console.log(numberCellsGrid);
-                    bombClicked = true // nel momento in cui la bomba viene cliccata la variabile in alto diventa true è il gioco termina
+                    bombClicked = true // nel momento in cui la bomba viene cliccata la variabile in alto diventa true e il gioco termina
                     alert(`il tuo punteggio è: ${yourScore}`)
-                } else {         
+                } else {   
                     // Il click viene contato solo se la cella non ha la classe 'square-blu'
                     if (!this.classList.contains('square-blue')) {
                         this.classList.add('square-blue')
                         yourScore++
                         userScoreCounter.innerHTML = yourScore
+                        
                     }
                 }
-            }           
+            }  
+            console.log(yourScore, allCellsToWin);
+            if (yourScore === allCellsToWin) {
+                alert('hai vinto')
+            } 
         })
     }
 });
+
 
 
 
@@ -89,22 +112,6 @@ function squareGenerator(number, inputDifficulty) {
     squareDiv.classList.add(classCells);
     squareDiv.innerHTML += `<span>${number}</span>`
     return squareDiv
-}
-
-
-// Funzione per generare un numero diverso di celle in base alla difficoltà di livello selezionata
-// numberCells -> un numero 
-// return: ritorna il numero di celle in base alla difficolta scelta nell'input select
-function difficultyLevel (input) {
-    let numberCells;
-    if (input === 'easy') {
-        numberCells = 100;
-    } else if (input === 'medium') {
-        numberCells = 81;
-    } else if (input === 'hard') {
-        numberCells = 49;
-    }
-    return numberCells
 }
 
 // Funzione per prendere 16 dei numeri casuali da 1 a 100
