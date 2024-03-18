@@ -16,8 +16,9 @@
 // Vanno pushati dentro un array 
 // Se i numeri generati dal ciclo sono uguali a quelli contenuti nell'array
 // Allora nel caso di questi numeri al momento del click della cella il colore diventa rossa
-// Il gioco termina  
+// La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
 
+// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 // Prendere ogni item all'interno dell'array e se è uguale al un numero presente nel ciclo for 
 // Mettere una condizione all'interno dell'evento di ascolto che assegna il colore alla cella
 
@@ -25,8 +26,6 @@ const gridGame = document.querySelector('.grid');
 const playStartTheGame = document.querySelector('.btn');
 const scoreContainer = document.querySelector('.score-counter-container')
 const userScoreCounter = document.querySelector('.score-counter');
-
-
 
 playStartTheGame.addEventListener('click', function () {
 
@@ -91,9 +90,6 @@ playStartTheGame.addEventListener('click', function () {
         })
     }
 });
-
-
-
 
 // FUNCTIONS
 // La funzione ha lo scopo di generare delle celle chiamate square con numeri all'interno da 1 a 100
