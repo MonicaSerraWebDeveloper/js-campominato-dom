@@ -17,27 +17,30 @@ playStartTheGame.addEventListener('click', function () {
 
    gridGame.style.display = 'flex'
    gridGame.innerHTML = '';
-   
-       for (let i = 1; i <= howManyCells; i++) {
-       
-           let squareGenerated = squareGenerator(i, mySelect)
-           gridGame.append(squareGenerated);
+   // Variabile per invocare la funzione che genera l'array dei numberi bomb
+   const generatedRandomNumbers = generateBombItems (16, 1, howManyCells);
+   console.log(generatedRandomNumbers);
 
-           squareGenerated.addEventListener('click', function() {
-               this.classList.toggle('square-blue')
-               console.log(i);
-           })
-       }
+    for (let i = 1; i <= howManyCells; i++) {
+        let numberCellsGrid = i
+        let squareGenerated = squareGenerator(numberCellsGrid, mySelect)
+        gridGame.append(squareGenerated);
+
+        // Se il numero è presente nell'array di generateBombItems allora il colore di bg è rosso
+        if (generatedRandomNumbers.includes(numberCellsGrid)) {
+            squareGenerated.addEventListener('click', function() {
+                this.classList.toggle('square-red')
+                console.log(numberCellsGrid);
+            })
+        } else {
+            squareGenerated.addEventListener('click', function() {
+                this.classList.toggle('square-blue')
+                console.log(numberCellsGrid);
+            })
+        }
+    }
 });
 
-const generatedRandomNumbers = generateBombItems (16, 1, 100);
-console.log(generatedRandomNumbers);
-
-let bombNumber;
-for (let i = 0; i < generatedRandomNumbers.length; i++) {
-    bombNumber = generatedRandomNumbers[i]
-}
-console.log(bombNumber);
 
 
 // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà
