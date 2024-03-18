@@ -32,17 +32,18 @@ playStartTheGame.addEventListener('click', function () {
    // richiamiamo il valore delle option nel select 
    const mySelect = document.querySelector('.select').value;
 
+   let bombNumberCells = 16;
    let allCellsToWin;
    let numberCells;
    if (mySelect === 'easy') {
        numberCells = 100;
-       allCellsToWin = numberCells - 16;
+       allCellsToWin = numberCells - bombNumberCells;
    } else if (mySelect === 'medium') {
        numberCells = 81;
-       allCellsToWin = numberCells - 16;
+       allCellsToWin = numberCells - bombNumberCells;
    } else if (mySelect === 'hard') {
        numberCells = 49;
-       allCellsToWin = numberCells - 16;
+       allCellsToWin = numberCells - bombNumberCells;
    }
    //invochiamo la funzione per definire quante celle genare in base al livello
 //    let howManyCells = difficultyLevel (mySelect)
@@ -51,7 +52,7 @@ playStartTheGame.addEventListener('click', function () {
    scoreContainer.style.display = 'flex'
    gridGame.innerHTML = '';
    // Variabile per invocare la funzione che genera l'array dei numberi bomb
-   const generatedRandomNumbers = generateBombItems (16, 1, numberCells);
+   const generatedRandomNumbers = generateBombItems (bombNumberCells, 1, numberCells);
    console.log(generatedRandomNumbers);
 
     // Creo una variabile che stabilisce il numero di celle che devono essere cliccate per vincere
