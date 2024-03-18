@@ -80,19 +80,23 @@ function difficultyLevel (input) {
     return numberCells
 }
 
-// Funzione per prendere 16 dei numeri casuali da 1 a 100 
+// Funzione per prendere 16 dei numeri casuali da 1 a 100
+// numMinRandom -> è un numero minimo da cui partire per generare il range
+// numMaxRandom -> è un numero massimo a cui arrivare per generare il range
+// itemsArrayNumber -> è un numero per decidere di quanti items deve comporsi l'array
 // Inserire in numeri dentro un array 
 // Creiamo un array vuoto pronto per essere popolato
 // Creiamo un ciclo while per genere un nuovo numero casuale fino a che non raggiungiamo 16 items
 // Pushiamo gli elementi generati dal ciclo while per pusharli dentro l'array
+// Return: la liste dei numeri che rappresentano le bomb
 
-const generatedBombList = generateBombItems ()
+const generatedBombList = generateBombItems (itemsArrayNumber, numMinRandom, numMaxRandom)
 console.log(generatedBombList);
 
 function generateBombItems () {
     const bombList = [];
-    while (bombList.length < 16) {
-        randomNumberRange = getRndInteger(1, 100)
+    while (bombList.length < itemsArrayNumber) {
+        randomNumberRange = getRndInteger(numMinRandom, numMaxRandom)
         if (!bombList.includes(randomNumberRange)) {
             bombList.push(randomNumberRange)
         }
