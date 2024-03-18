@@ -21,6 +21,7 @@ playStartTheGame.addEventListener('click', function () {
    const generatedRandomNumbers = generateBombItems (16, 1, howManyCells);
    console.log(generatedRandomNumbers);
 
+    let bombClicked = false
     for (let i = 1; i <= howManyCells; i++) {
         let numberCellsGrid = i
         let squareGenerated = squareGenerator(numberCellsGrid, mySelect)
@@ -28,13 +29,16 @@ playStartTheGame.addEventListener('click', function () {
 
         // Se il numero è presente nell'array di generateBombItems allora il colore di bg è rosso
         squareGenerated.addEventListener('click', function() {
-            if (generatedRandomNumbers.includes(numberCellsGrid)) {
-                this.classList.add('square-red')
-                console.log(numberCellsGrid);
-            } else {
-                this.classList.add('square-blue')
-                console.log(numberCellsGrid);
-            } 
+            if (!bombClicked) {
+                if (generatedRandomNumbers.includes(numberCellsGrid)) {
+                    this.classList.add('square-red')
+                    console.log(numberCellsGrid);
+                    bombClicked = true
+                } else {
+                    this.classList.add('square-blue')
+                    console.log(numberCellsGrid);
+                } 
+            }
         })
     }
 });
