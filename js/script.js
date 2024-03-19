@@ -32,21 +32,19 @@ playStartTheGame.addEventListener('click', function () {
    // richiamiamo il valore delle option nel select 
    const mySelect = document.querySelector('.select').value;
 
-   let bombNumberCells = 16;
-   let allCellsToWin;
+   const bombNumberCells = 16;
    let numberCells;
    if (mySelect === 'easy') {
        numberCells = 100;
-       allCellsToWin = numberCells - bombNumberCells;
    } else if (mySelect === 'medium') {
        numberCells = 81;
-       allCellsToWin = numberCells - bombNumberCells;
    } else if (mySelect === 'hard') {
        numberCells = 49;
-       allCellsToWin = numberCells - bombNumberCells;
    }
+
+    // Definiamo la funzione per calcolare quante celle occorrono per vincere
+    const allCellsToWin = numberCells - bombNumberCells
    //invochiamo la funzione per definire quante celle genare in base al livello
-//    let howManyCells = difficultyLevel (mySelect)
 
    gridGame.style.display = 'flex'
    scoreContainer.style.display = 'flex'
@@ -84,9 +82,8 @@ playStartTheGame.addEventListener('click', function () {
                         userScoreCounter.innerHTML = yourScore
                     }
                 }
-            }  
-            console.log(yourScore, allCellsToWin);
-            if (yourScore === allCellsToWin) {
+                // Se l'utente clicca tutte le cells blue allora il gioco si ferma e vince
+            }   if (yourScore === allCellsToWin) {
                 alert('hai vinto')
                 stopClick = true
             } 
